@@ -20,9 +20,13 @@ function App() {
         {id: v1(), title: 'Xiaomi 13', OS: 'Android', checked: false},
         {id: v1(), title: 'Huawei', OS: 'Android', checked: false}
     ])
+    const addWish = (newItem: string, newOs: OSType) => {
+        const newWish: WishesType = {id: v1(), title: newItem, OS: newOs, checked: false}
+        setWishes([newWish, ...wishes])
+    }
     return (
         <div className="App">
-            <WishList wishes={wishes}/>
+            <WishList wishes={wishes} addWish={addWish}/>
         </div>
     );
 }
