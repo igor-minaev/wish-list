@@ -1,9 +1,21 @@
 import React, {useState} from 'react';
 import './App.css';
 import {v1} from 'uuid';
+import {WishList} from './WishList';
+
+export type OsType = 'iOS' | 'Android' | '-'
+
+export type WishesType = {
+    id: string
+    title: string
+    price: number
+    category: 'Phones'
+    OS: OsType
+    checked: boolean
+}
 
 function App() {
-    const [wishes, setWishes] = useState([
+    const [wishes, setWishes] = useState<WishesType[]>([
         {id: v1(), title: 'IPhone 13 ProMax', price: 1200, category: 'Phones', OS: 'iOS', checked: true},
         {id: v1(), title: 'IPhone 14', price: 1400, category: 'Phones', OS: 'iOS', checked: true},
         {id: v1(), title: 'Samsung Galaxy Fold 4', price: 1500, category: 'Phones', OS: 'Android', checked: true},
@@ -15,7 +27,7 @@ function App() {
 
     return (
         <div className="App">
-
+            <WishList wishes={wishes}/>
         </div>
     );
 }
